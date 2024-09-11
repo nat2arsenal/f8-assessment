@@ -11,15 +11,13 @@ import { UserContext } from '../Context';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isValid, setIsValid] = useState(false);
-  const { users, setUser, user } = useContext(UserContext);
+  const { users, setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const validateInputs = (email, password) => {
     const foundUser = users.find((user) => email === user.email);
     if (foundUser) {
       if (password === foundUser.password) {
-        setIsValid(true);
         setUser((currentUser) => {
           return {
             ...currentUser,
@@ -28,15 +26,15 @@ const Login = () => {
             password: password,
           };
         });
+        localStorage.setItem('name', `${foundUser.name}`);
+        navigate('/database');
       } else {
-        setIsValid(false);
         setPassword('');
-        alert('Incorrect password!');
+        alert('Incorrect password! Please try again.');
       }
     } else {
-      setIsValid(false);
       setEmail('');
-      alert('Email not found!');
+      alert('Email not found! Please try again.');
     }
   };
 
@@ -48,11 +46,11 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (isValid) {
+    const name = localStorage.getItem('name') ? localStorage.getItem('name') : null;
+    if (name !== null) {
       navigate('/database');
     }
-    console.log(user);
-  }, [isValid, navigate, user]);
+  }, [navigate]);
 
   return (
     <div className="login-page">

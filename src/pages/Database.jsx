@@ -1,7 +1,8 @@
 import Layout from '../components/Layout';
 
 const Database = () => {
-  return <Layout>Database</Layout>;
+  const name = localStorage.getItem('name') ? localStorage.getItem('name') : null;
+  return <Layout>{name}</Layout>;
 };
 
 export default Database;
