@@ -1,0 +1,15 @@
+.back-button {
+  display: flex;
+  align-items: center;
+  font-size: $small;
+  font-weight: $semiBold;
+  color: $gray;
+  gap: 14px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  &:hover {
+    opacity: 0.8;
+  }
+}
