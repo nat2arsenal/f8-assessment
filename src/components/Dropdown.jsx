@@ -20,3 +20,22 @@ const Dropdown = ({ identifier, label, options = [] }) => {
 };
 
 export default Dropdown;
+
+export const CalendarDropdown = ({ identifier, label, options = [] }) => {
+  return (
+    <div className="dropdown-container-calendar">
+      <label className="calendar">{label}</label>
+      <select className={identifier}>
+        {options?.map((option, index) => (
+          <option key={index}>{option}</option>
+        ))}
+      </select>
+      <svg width="4" height="3" viewBox="0 0 4 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M0.592774 1.12362L1.76901 2.78553C1.94613 3.03578 2.23224 3.03578 2.40936 2.78553L3.58559 1.12362C3.8717 0.719367 3.66734 0.0263672 3.26315 0.0263672H0.910676C0.506486 0.0263672 0.306662 0.719367 0.592774 1.12362Z"
+          fill="black"
+        />
+      </svg>
+    </div>
+  );
+};

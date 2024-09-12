@@ -9,6 +9,7 @@
 @import './pageLayout.scss';
 @import './header.scss';
 @import './dealsPage.scss';
+@import './summaryPage.scss';
 
 @font-face {
   font-family: 'Outfit';
@@ -32,7 +33,7 @@ body {
   color: $black;
 }
 a {
-  color: blue;
+  color: #1b59f8;
 }
 input {
   outline: none;
@@ -47,6 +48,9 @@ button {
 }
 .blue {
   color: #1b59f8;
+}
+.yellow {
+  color: #ffb700;
 }
 .no-highlight {
   -webkit-user-select: none;

@@ -1,7 +1,7 @@
 import BackButton from '../components/BackButton';
+import Input from '../components/Input';
 
 import logo from '../assets/f8_logo.png';
-import Input from '../components/Input';
 
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
