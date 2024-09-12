@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../Context';
 
 const Login = () => {
+  const name = localStorage.getItem('name') ? localStorage.getItem('name') : null;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { users, setUser } = useContext(UserContext);
@@ -46,11 +47,10 @@ const Login = () => {
   };
 
   useEffect(() => {
-    const name = localStorage.getItem('name') ? localStorage.getItem('name') : null;
     if (name !== null) {
       navigate('/database');
     }
-  }, [navigate]);
+  }, [navigate, name]);
 
   return (
     <div className="login-page">

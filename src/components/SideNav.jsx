@@ -1,6 +1,8 @@
 import logo from '../assets/f8_logo.png';
 import circleLogo from '../assets/f8_circle_logo.png';
-import SideNavItem from './SideNavItem';
+
+import classNames from 'classnames';
+import { Link, useLocation } from 'react-router-dom';
 
 const SideNav = () => {
   return (
@@ -93,3 +95,20 @@ const SideNav = () => {
 };
 
 export default SideNav;
+
+const SideNavItem = ({ pathname, label, children }) => {
+  let location = useLocation();
+  return (
+    <li>
+      <Link
+        className={classNames('sidenav_sections-category no-highlight', {
+          'sidenav_sections-category--active': location.pathname.startsWith(`${pathname}`),
+        })}
+        to={pathname}
+      >
+        <div className="icon">{children}</div>
+        <p>{label}</p>
+      </Link>
+    </li>
+  );
+};

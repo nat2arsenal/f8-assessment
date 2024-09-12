@@ -1,11 +1,75 @@
 .deals-page-content {
   display: flex;
   gap: 60px;
-  padding-left: 78px;
+  padding-inline: 78px;
+  flex-wrap: wrap;
 }
 .deals-page-column {
-  width: 320px;
+  flex-grow: 1;
+  max-width: 320px;
   height: 100%;
+  &_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 100px;
+    padding: 10px 15px;
+    margin-bottom: 28px;
+    &.pipeline {
+      border: 1px solid #fc3e12;
+    }
+    &.postponed {
+      border: 1px solid #e9a800;
+    }
+    &.won {
+      border: 1px solid #fc1274;
+    }
+    &.lost {
+      border: 1px solid #00ae07;
+    }
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 18px;
+      font-weight: $semiBold;
+      color: #232323;
+      span {
+        width: 23px;
+        height: 23px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        color: $white;
+        border-radius: 100%;
+      }
+      span.pipeline {
+        border: 1px solid #fc3e12;
+        background: linear-gradient(180deg, #fc3e12 0%, #ff6b44 100%);
+      }
+      span.postponed {
+        border: 1px solid #ffbf1b;
+        background: linear-gradient(180deg, #ffbf1b 0%, #e9a800 100%);
+      }
+      span.won {
+        border: 1px solid #ff0000;
+        background: linear-gradient(180deg, #fc1274 0%, #ff0000 100%);
+      }
+      span.lost {
+        border: 1px solid #00ae07;
+        background: linear-gradient(180deg, #00ae07 0%, #00e809 100%);
+      }
+    }
+    svg {
+      cursor: pointer;
+      &:hover {
+        opacity: 0.8;
+        scale: 1.1;
+        transition: all 100ms ease-in-out;
+      }
+    }
+  }
   &_data {
     display: flex;
     flex-direction: column;

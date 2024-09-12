@@ -1,8 +1,13 @@
-import Layout from '../components/Layout';
+import Layout, { PageHeader } from '../components/Layout';
 
 const Database = () => {
-  const name = localStorage.getItem('name') ? localStorage.getItem('name') : null;
-  return <Layout>{name}</Layout>;
+  return (
+    <Layout>
+      <PageHeader identifier="page-header_database" label="DATABASE">
+        <button className="linear-orange-horizontal">Add New Database +</button>
+      </PageHeader>
+    </Layout>
+  );
 };
 
 export default Database;
