@@ -12,7 +12,10 @@ const Login = () => {
   const name = localStorage.getItem('name') ? localStorage.getItem('name') : null;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+
   const { users, setUser } = useContext(UserContext);
+
   const navigate = useNavigate();
 
   const validateInputs = (email, password) => {
@@ -31,11 +34,11 @@ const Login = () => {
         navigate('/database');
       } else {
         setPassword('');
-        alert('Incorrect password! Please try again.');
+        setError('password');
       }
     } else {
       setEmail('');
-      alert('Email not found! Please try again.');
+      setError('email');
     }
   };
 
@@ -64,8 +67,24 @@ const Login = () => {
           <h2>Account Login</h2>
           <h6>If you are already a member you can login with your email address and password.</h6>
           <form className="login-form" onSubmit={handleSubmit}>
-            <Input label="Email address" type="email" name="emailAddress" required value={email} onChange={(e) => setEmail(e.target.value)} />
-            <Input label="Password" type="password" name="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
+            <Input
+              label="Email address"
+              type="email"
+              name="emailAddress"
+              required
+              value={email}
+              onChange={(e) => (setEmail(e.target.value), setError(null))}
+              error={error}
+            />
+            <Input
+              label="Password"
+              type="password"
+              name="password"
+              required
+              value={password}
+              onChange={(e) => (setPassword(e.target.value), setError(null))}
+              error={error}
+            />
             <label className="checkbox no-highlight">
               <input type="checkbox" className="checkbox_input" />
               Remember me

@@ -1,12 +1,16 @@
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import DealsPageItem, { DealsPageColumnHeader } from '../components/DealsPageItem';
 import Dropdown from '../components/Dropdown';
 import Layout, { PageHeader } from '../components/Layout';
+import { DealsModal } from '../components/Modal';
 
 const Deals = () => {
   const name = localStorage.getItem('name') ? localStorage.getItem('name') : null;
+
+  const [toggleModal, setToggleModal] = useState(false);
+
   const navigate = useNavigate();
 
   const pipelineData = [
@@ -129,7 +133,9 @@ const Deals = () => {
           <Dropdown identifier="location" label="Filter by Location:" options={['Singapore', 'Hong Kong', 'United Kingdom']} />
           <Dropdown identifier="services" label="Filter by Services:" options={['Digital Services', 'Service 2', 'Service 3']} />
         </div>
-        <button className="linear-orange-horizontal">Add New Deals +</button>
+        <button className="linear-orange-horizontal" title="Add New Deal" onClick={() => setToggleModal(true)}>
+          Add New Deals +
+        </button>
       </PageHeader>
       <div className="deals-page-content">
         <div className="deals-page-column">
@@ -165,6 +171,7 @@ const Deals = () => {
           </div>
         </div>
       </div>
+      <DealsModal toggleModal={toggleModal} setToggleModal={setToggleModal} />
     </Layout>
   );
 };

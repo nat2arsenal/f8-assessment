@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
+  position: relative;
   label {
     font-size: $small;
     color: $dark-gray;
@@ -15,5 +16,88 @@
     margin-bottom: 24px;
     font-size: $small;
     color: #494949;
+  }
+  &_error-message {
+    font-size: 14px;
+    font-weight: $regular;
+    color: red !important;
+    display: inline;
+    margin-left: 10px;
+  }
+}
+
+.modal-input,
+.modal-select {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font-family: 'Outfit';
+  label {
+    font-size: $small;
+    line-height: 20px;
+    cursor: pointer;
+  }
+  input,
+  select {
+    border: 1px solid #e8e8e8;
+    border-radius: 100px;
+    height: 48px;
+    padding-inline: 20px;
+    font-size: $small;
+    color: #00000080;
+    box-shadow: 0px 4px 10px 0px #0000000d;
+  }
+  select {
+    width: 100%;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+  }
+  input:focus {
+    outline: 1px solid #000000;
+  }
+  input::placeholder {
+    font-size: $small;
+    color: #00000080;
+  }
+
+  input::-ms-input-placeholder {
+    font-size: $small;
+    color: #00000080;
+  }
+  &_container {
+    position: relative;
+    svg {
+      position: absolute;
+      top: 21px;
+      right: 17px;
+      z-index: 2;
+    }
+  }
+}
+.modal-textarea {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font-family: 'Outfit';
+  flex-grow: 1;
+  label {
+    font-size: $small;
+    line-height: 20px;
+    cursor: pointer;
+  }
+  textarea {
+    flex-grow: 1;
+    background-color: $white;
+    border: 1px solid #eeeeee;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px 0px #0000000d;
+    padding: 20px;
+    font-family: 'Outfit';
+    font-size: $small;
+    color: #00000080;
+    &:focus {
+      outline: 1px solid #000000;
+    }
   }
 }

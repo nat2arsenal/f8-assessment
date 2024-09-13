@@ -1,7 +1,9 @@
+import classNames from 'classnames';
+
 const Dropdown = ({ identifier, label, options = [] }) => {
   return (
-    <div className="dropdown-container">
-      <label>{label}</label>
+    <div className={classNames('dropdown-container', identifier)}>
+      <label className={identifier}>{label}</label>
       <select className={identifier}>
         {options?.map((option, index) => (
           <option key={index}>{option}</option>
