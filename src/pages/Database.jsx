@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Layout, { PageHeader } from '../components/Layout';
 
@@ -6,6 +7,10 @@ import more from '../assets/more-icon.png';
 import DatabaseModal from '../components/Modal';
 
 const Database = () => {
+  const name = localStorage.getItem('name') ? localStorage.getItem('name') : null;
+
+  const navigate = useNavigate();
+
   const initialDataBase = [
     {
       companyName: 'Test Contact 1',
@@ -139,6 +144,12 @@ const Database = () => {
       setDatabaseData(initialDataBase);
     }
   };
+
+  useEffect(() => {
+    if (name === null) {
+      navigate('/');
+    }
+  }, [navigate, name]);
 
   return (
     <Layout>
